@@ -20,7 +20,7 @@ const Projects = () => {
         <div className="flex w-full h-[300px] bg-slate-100 rounded-lg shadow-md items-end justify-center">
           <div className="p-2 flex flex-col mb-2">
             <Image
-              src="/angular-task.png"
+              src="https://raw.githubusercontent.com/chrismcconn2789/website/main/public/angular-task.png"
               alt="angular-task-app-screenshot"
               width={380}
               height={255}
@@ -44,7 +44,7 @@ const Projects = () => {
         <div className="flex w-full h-[300px] bg-slate-100 rounded-lg shadow-md items-end justify-center">
           <div className="p-2 flex flex-col mb-2">
             <Image
-              src="/react-task.png"
+              src="https://raw.githubusercontent.com/chrismcconn2789/website/main/public/react-task.png"
               alt="react-task-app-screenshot"
               width={380}
               height={255}
@@ -68,7 +68,7 @@ const Projects = () => {
         <div className="flex w-full h-[300px] bg-slate-100 rounded-lg shadow-md items-end justify-center">
           <div className="p-2 flex flex-col mb-2">
             <Image
-              src="/next-weather.png"
+              src="https://raw.githubusercontent.com/chrismcconn2789/website/main/public/next-weather.png"
               alt="weather-app-screenshot"
               width={380}
               height={255}
