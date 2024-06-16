@@ -22,21 +22,21 @@ const Header = () => {
           />
         </span>
       </div>
-      <nav>
+      <nav className="flex gap-2">
         <ul className="flex gap-2">
           <li>
             <Button
               asChild
-              className="font-regular tracking-tight text-base underline-offset-8 decoration-teal-500 decoration-2 hover:decoration-teal-500"
+              className="font-regular tracking-tight text-base underline-offset-8 decoration-teal-400"
               variant="link"
             >
-              <Link href="#projects">About</Link>
+              <Link href="#about">About</Link>
             </Button>
           </li>
           <li>
             <Button
               asChild
-              className="font-regular tracking-tight text-base underline-offset-8  decoration-teal-500 decoration-2 hover:decoration-teal-500"
+              className="font-regular tracking-tight text-base underline-offset-8 decoration-teal-400"
               variant="link"
             >
               <Link href="#projects">Projects</Link>
@@ -45,19 +45,19 @@ const Header = () => {
           <li>
             <Button
               asChild
-              className="font-regular tracking-tight text-base underline-offset-8  decoration-teal-500 decoration-2 hover:decoration-teal-500"
+              className="font-regular tracking-tight text-base underline-offset-8 decoration-teal-400"
               variant="link"
             >
-              <Link href="#projects">Blog</Link>
+              <Link href="#blog">Blog</Link>
             </Button>
           </li>
           <li>
             <Button
               asChild
-              className="font-regular tracking-tight text-base underline-offset-8  decoration-teal-500 decoration-2 hover:decoration-teal-500"
+              className="font-regular tracking-tight text-base underline-offset-8 decoration-teal-400"
               variant="link"
             >
-              <Link href="#projects">Contact</Link>
+              <Link href="#contact">Contact</Link>
             </Button>
           </li>
         </ul>
