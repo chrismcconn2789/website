@@ -1,4 +1,5 @@
-import { FaGithub, FaLinkedin, FaUserAlt } from "react-icons/fa";
+import Image from "next/image";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiMapPin } from "react-icons/fi";
 import { RxChevronRight } from "react-icons/rx";
 import { Button } from "../ui/button";
@@ -24,15 +25,16 @@ const About = () => {
                 <RxChevronRight className="size-4 text-teal-400 stroke-teal-400 stroke-1 justify-self-start mt-1" />
               </span>
               I am a front-end developer at OpenText, specializing in creating
-              engaging, interactive, and accessible user interfaces using
-              Angular and NgRx.
+              engaging, interactive, and accessible user interfaces primarily
+              using Angular.
             </p>
             <p className="font-regular text-slate-600 flex gap-1">
               <span>
                 <RxChevronRight className="size-4 text-teal-400 stroke-teal-400 stroke-1 justify-self-start mt-1" />
               </span>
-              I have extensive experience with HTML, CSS, and JavaScript,
-              focusing on building responsive and user-friendly applications.
+              I have extensive experience with HTML, CSS, JavaScript and
+              Typescript, focusing on building responsive and user-friendly
+              applications.
             </p>
             <p className="font-regular  text-slate-600 flex gap-1">
               <span>
@@ -42,6 +44,13 @@ const About = () => {
               such as React and Next.js to enhance my skill set and build
               innovative side projects.
             </p>
+            <p className="font-regular  text-slate-600 flex gap-1">
+              <span>
+                <RxChevronRight className="size-4 text-teal-400 stroke-teal-400 stroke-1 justify-self-start mt-1" />
+              </span>
+              When I'm not at the computer, I&apos;m normally spending time with
+              my wife and son or out cycling on the Ards peninsula.
+            </p>
           </div>
           <div className="flex gap-4 ml-4 mt-2">
             <Button asChild size="sm" className="flex gap-2">
@@ -50,19 +59,22 @@ const About = () => {
                 <span className="text-xs">View Github</span>
               </a>
             </Button>
-            <Button size="sm" variant="outline" className="flex gap-2">
-              <FaLinkedin className="size-5 text-sky-500" />
-              <span className="text-xs">View LinkedIn</span>
+            <Button asChild size="sm" variant="outline" className="flex gap-2">
+              <a href="https://linkedin.com/in/cmcconnell89">
+                <FaLinkedin className="size-5 text-sky-500" />
+                <span className="text-xs">View LinkedIn</span>
+              </a>
             </Button>
           </div>
         </div>
-        <div className="w-1/3 flex justify-center">
-          <div className="h-[350px] w-[250px] bg-slate-100 shadow-md rounded-md flex flex-col items-center justify-center text-center gap-2">
-            <FaUserAlt className="text-teal-400 size-10" />
-            <p className="text-xs text-slate-500 w-1/3">
-              Profile picture placeholder
-            </p>
-          </div>
+        <div className="w-1/3 flex justify-center items-center">
+          <Image
+            src="/website-photo-3.jpg"
+            width={1000}
+            height={1000}
+            alt="profile-pic"
+            className="object-fit rounded-md shadow-xl w-5/6 h-auto"
+          />
         </div>
       </div>
     </div>

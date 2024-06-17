@@ -12,7 +12,7 @@ const Header = () => {
             className="text-teal-400 size-10 -mr-2 stroke-1"
           />
         </span>
-        <h1 className="text-3xl tracking-tighter font-medium">
+        <h1 className="text-4xl tracking-tighter font-bold">
           chrismcconnell.dev
         </h1>
         <span>
@@ -27,7 +27,7 @@ const Header = () => {
           <li>
             <Button
               asChild
-              className="font-regular tracking-tight text-base underline-offset-8 decoration-teal-400"
+              className="font-regular tracking-tight underline-offset-8 decoration-teal-400 text-lg"
               variant="link"
             >
               <Link href="#about">About</Link>
@@ -36,7 +36,7 @@ const Header = () => {
           <li>
             <Button
               asChild
-              className="font-regular tracking-tight text-base underline-offset-8 decoration-teal-400"
+              className="font-regular tracking-tight text-lg underline-offset-8 decoration-teal-400"
               variant="link"
             >
               <Link href="#projects">Projects</Link>
@@ -45,7 +45,7 @@ const Header = () => {
           <li>
             <Button
               asChild
-              className="font-regular tracking-tight text-base underline-offset-8 decoration-teal-400"
+              className="font-regular tracking-tight text-lg underline-offset-8 decoration-teal-400"
               variant="link"
             >
               <Link href="#blog">Blog</Link>
@@ -54,7 +54,7 @@ const Header = () => {
           <li>
             <Button
               asChild
-              className="font-regular tracking-tight text-base underline-offset-8 decoration-teal-400"
+              className="font-regular tracking-tight text-lg underline-offset-8 decoration-teal-400"
               variant="link"
             >
               <Link href="#contact">Contact</Link>
