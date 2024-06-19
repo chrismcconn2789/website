@@ -5,7 +5,7 @@ import { SiGithub, SiInstagram, SiLinkedin, SiTwitter } from "react-icons/si";
 const Contact = () => {
   return (
     <div id="contact" className="w-full px-8">
-      <h2 className="text-xl font-medium tracking-tight text-slate-800 underline-offset-8 decoration-teal-400 underline mb-4">
+      <h2 className="text-2xl font-bold tracking-tighter text-slate-800 underline-offset-8 decoration-teal-400 underline mb-6">
         Contact
       </h2>
       <p className="text-slate-600 mb-4">Get in touch:</p>
@@ -18,11 +18,10 @@ const Contact = () => {
               hello@chrismcconnell.dev
             </a>
           </div>
-          <div className="flex gap-2 p-4 bg-slate-100 rounded-md items-center opacity-20">
+          {/* TODO: fix up CV and add download back in */}
+          <div className="hidden gap-2 p-4 bg-slate-100 rounded-md items-center">
             <FiDownload className="size-6" />
-            <a className="font-medium">
-              Curriculum Vitae (CV) (coming soon ...)
-            </a>
+            <a className="font-medium">Curriculum Vitae (CV)</a>
           </div>
         </div>
         <div className="w-1/2 flex flex-col gap-2">

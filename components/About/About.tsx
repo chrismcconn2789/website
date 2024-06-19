@@ -7,7 +7,7 @@ import { Button } from "../ui/button";
 const About = () => {
   return (
     <div id="about" className="w-full px-6">
-      <h2 className="text-xl font-medium tracking-tight mb-4 underline-offset-8 decoration-teal-400 underline">
+      <h2 className="text-2xl font-bold tracking-tight mb-6 underline-offset-8 decoration-teal-400 underline">
         About
       </h2>
       <div className="flex w-full">

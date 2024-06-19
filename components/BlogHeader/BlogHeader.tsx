@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import { RxChevronLeft, RxChevronRight } from 'react-icons/rx'
-import { Button } from '../ui/button'
+import Link from "next/link";
+import { RxChevronLeft, RxChevronRight } from "react-icons/rx";
+import { Button } from "../ui/button";
 
 const Header = () => {
   return (
@@ -32,7 +32,7 @@ const Header = () => {
               className="font-semibold tracking-tighter underline-offset-8 decoration-teal-400 text-lg"
               variant="link"
             >
-              <Link href="#about">About</Link>
+              <Link href="/#about">About</Link>
             </Button>
           </li>
           <li>
@@ -41,7 +41,7 @@ const Header = () => {
               className="font-semibold tracking-tighter text-lg underline-offset-8 decoration-teal-400"
               variant="link"
             >
-              <Link href="#projects">Projects</Link>
+              <Link href="/#projects">Projects</Link>
             </Button>
           </li>
           <li>
@@ -50,7 +50,7 @@ const Header = () => {
               className="font-semibold tracking-tighter text-lg underline-offset-8 decoration-teal-400"
               variant="link"
             >
-              <Link href="#blog">Blog</Link>
+              <Link href="/#blog">Blog</Link>
             </Button>
           </li>
           <li>
@@ -59,13 +59,13 @@ const Header = () => {
               className="font-semibold tracking-tighter text-lg underline-offset-8 decoration-teal-400"
               variant="link"
             >
-              <Link href="#contact">Contact</Link>
+              <Link href="/#contact">Contact</Link>
             </Button>
           </li>
         </ul>
       </nav>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

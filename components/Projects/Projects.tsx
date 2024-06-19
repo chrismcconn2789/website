@@ -14,7 +14,7 @@ import Project from "../Project/Project";
 const Projects = () => {
   return (
     <div id="projects" className="w-full px-6">
-      <h2 className="text-xl font-medium tracking-tight underline-offset-8 decoration-teal-400 underline mb-4">
+      <h2 className="text-2xl font-bold tracking-tight underline-offset-8 decoration-teal-400 underline mb-6">
         Projects
       </h2>
       <p className="text-base text-slate-600 mb-4">
