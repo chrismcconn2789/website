@@ -40,8 +40,11 @@ export default function Blog() {
           return dateA - dateB;
         })
         .map((blog) => (
-          <div className="w-full rounded-md bg-slate-100 h-auto shadow-md p-4 flex flex-col gap-2">
-            <a key={blog.slug} href={`/blog/${blog.slug}`}>
+          <div
+            key={blog.slug}
+            className="w-full rounded-md bg-slate-100 h-auto shadow-md p-4 flex flex-col gap-2"
+          >
+            <a href={`/blog/${blog.slug}`}>
               <div className="flex flex-col gap-2">
                 <h4 className="text-base md:text-lg font-semibold">
                   {blog.meta.title}

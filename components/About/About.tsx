@@ -48,8 +48,8 @@ const About = () => {
               <span>
                 <RxChevronRight className="size-3 md:size-4 text-teal-400 stroke-teal-400 stroke-1 justify-self-start mt-1" />
               </span>
-              When I'm not at the computer, I&apos;m normally spending time with
-              my wife and son or out cycling on the Ards peninsula.
+              When I&apos;m not at the computer, I&apos;m normally spending time
+              with my wife and son or out cycling on the Ards peninsula.
             </p>
           </div>
           <div className="flex gap-4 ml-4 mt-2 mb-8 md:mb-0 justify-center md:justify-start">
