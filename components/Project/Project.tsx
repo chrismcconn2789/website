@@ -36,7 +36,7 @@ const Project = ({
 }: ProjectProps) => {
   return (
     <div className="p-4 flex flex-col gap-4">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row gap-2 md:gap-0 justify-between items-center">
         <h4 className="text-lg font-bold">{name}</h4>
         <div className="flex gap-2">
           <a href={link.url}>
@@ -62,7 +62,7 @@ const Project = ({
           className="w-full h-auto"
         />
       </div>
-      <div className="flex gap-2 self-center">
+      <div className="flex flex-wrap justify-center gap-2 self-center">
         {technologies.map((tech, index) => {
           return (
             <Badge

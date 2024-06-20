@@ -118,3 +118,7 @@ pre:has(.hljs),
 .hljs-strong {
   font-weight: bold;
 }
+
+.hjs-table {
+  white-space: wrap;
+}

@@ -65,13 +65,13 @@ export async function generateMetadata({
 const ArticlePage = ({ params: { slug } }: routeParams) => {
   const post = getPost(slug);
   return (
-    <div className="max-w-5xl m-auto flex min-h-screen flex-col items-center gap-20 p-8">
+    <main className="max-w-5xl m-auto flex min-h-screen flex-col items-center gap-10 md:gap-20 p-4 md:p-8">
       <BlogHeader />
-      <article className="max-w-5xl prose prose-sm md:prose-base lg:prose-lg prose-slate mx-auto">
+      <article className="max-w-xs md:max-w-5xl prose prose-sm md:prose-base lg:prose-lg prose-slate mx-auto">
         <MDXRemote source={post.content} options={options} />
       </article>
       <Footer />
-    </div>
+    </main>
   );
 };
 

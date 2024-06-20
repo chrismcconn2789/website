@@ -9,7 +9,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "chrismcconnell.dev",
-  description: "My portfolio website",
+  description: "Chris McConnell Portfolio Website",
 };
 
 export default function RootLayout({
@@ -19,6 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/programming.png" sizes="any" />
+      </head>
       <body className={poppins.className}>{children}</body>
     </html>
   );

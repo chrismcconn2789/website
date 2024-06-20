@@ -13,14 +13,14 @@ import Project from "../Project/Project";
 
 const Projects = () => {
   return (
-    <div id="projects" className="w-full px-6">
-      <h2 className="text-2xl font-bold tracking-tight underline-offset-8 decoration-teal-400 underline mb-6">
+    <div id="projects" className="w-full px-1 md:px-6">
+      <h2 className="text-xl md:text-2xl font-bold tracking-tight underline-offset-8 decoration-teal-400 underline mb-6">
         Projects
       </h2>
-      <p className="text-base text-slate-600 mb-4">
+      <p className="text-sm md:text-base text-slate-600 mb-4">
         Some side projects I&apos;ve built or I&apos;m currently working on:
       </p>
-      <div className="grid grid-cols-2 gap-6 mt-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
         <div className="flex w-full h-auto bg-slate-100 rounded-lg shadow-md justify-center">
           <Project
             name="Angular Task App"
@@ -29,7 +29,7 @@ const Projects = () => {
               url: "https://github.com/chrismcconn2789/angular-task-list",
               icon: <SiGithub />,
             }}
-            imgUrl="https://raw.githubusercontent.com/chrismcconn2789/website/main/public/angular-task.png"
+            imgUrl="https://utfs.io/f/bc0df5b9-92f5-4450-be7f-2d8e7a2d4c2e-tq79f4.png"
             link={{
               url: "https://angular-task-list.chrismcconnell.dev",
               icon: <FaGlobe />,
@@ -59,7 +59,7 @@ const Projects = () => {
               url: "https://github.com/chrismcconn2789/react-task-list",
               icon: <SiGithub />,
             }}
-            imgUrl="https://raw.githubusercontent.com/chrismcconn2789/website/main/public/react-task.png"
+            imgUrl="https://utfs.io/f/ad97d2bc-02e9-4694-9d25-47a75e9cb6a1-8epywd.png"
             link={{
               url: "https://react-task-list.chrismcconnell.dev",
               icon: <FaGlobe />,
@@ -89,7 +89,7 @@ const Projects = () => {
               url: "https://github.com/chrismcconn2789/nextjs-weather",
               icon: <SiGithub />,
             }}
-            imgUrl="https://raw.githubusercontent.com/chrismcconn2789/website/main/public/next-weather.png"
+            imgUrl="https://utfs.io/f/c429eb3c-b19c-43da-b0c3-e1cbae1726df-ke668q.png"
             link={{
               url: "https://nextjs-weather-five.vercel.app/",
               icon: <FaGlobe />,

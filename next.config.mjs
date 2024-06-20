@@ -3,7 +3,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "raw.githubusercontent.com",
+        hostname: "utfs.io",
+        protocol: "https",
       },
     ],
   },

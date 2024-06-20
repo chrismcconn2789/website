@@ -4,13 +4,13 @@ import { SiGithub, SiInstagram, SiLinkedin, SiTwitter } from "react-icons/si";
 
 const Contact = () => {
   return (
-    <div id="contact" className="w-full px-8">
-      <h2 className="text-2xl font-bold tracking-tighter text-slate-800 underline-offset-8 decoration-teal-400 underline mb-6">
+    <div id="contact" className="w-full px-1 md:px-6">
+      <h2 className="text-xl md:text-2xl font-bold tracking-tighter text-slate-800 underline-offset-8 decoration-teal-400 underline mb-6">
         Contact
       </h2>
       <p className="text-slate-600 mb-4">Get in touch:</p>
-      <div className="flex gap-4">
-        <div className="w-1/2 flex flex-col gap-2">
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="w-full md:w-1/2 flex flex-col gap-2">
           <span className="text-base font-semibold">Email & CV</span>{" "}
           <div className="flex gap-2 p-4 bg-slate-100 rounded-md items-center">
             <FiMail className="size-6" />
@@ -24,9 +24,9 @@ const Contact = () => {
             <a className="font-medium">Curriculum Vitae (CV)</a>
           </div>
         </div>
-        <div className="w-1/2 flex flex-col gap-2">
+        <div className="w-full md:w-1/2 flex flex-col gap-2">
           <div className="text-base font-semibold">Socials</div>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             <div className="flex gap-2 p-4 bg-slate-100 rounded-md items-center">
               <SiGithub className="size-6" />
               <Link

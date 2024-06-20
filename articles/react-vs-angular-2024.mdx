@@ -1,7 +1,7 @@
 ---
 title: React versus Angular in 2024
 description:
-  A simply todo/list list application built using both React and Angular to
+  A simple todo/task list application built using both React and Angular to
   compare their developer experience, performance and personal opinions
 date: "06/18/2024"
 tags: [angular, react]
@@ -30,7 +30,7 @@ tags: [angular, react]
 
 ### Premise
 
-I set out to build a similarily styled and similarily functional todo/task list
+I set out to build a similarly styled and similarly functional todo/task list
 application using both React and Angular to compare their setup, developer
 experience, performance and general usability in 2024.
 
@@ -115,15 +115,15 @@ handle task list item unique ids
 
 ### What is React?
 
-React is a open-sourced Javascript libary managed by Facebook's React team
-([React](https://react.dev)). It has a component based architecture and
-declaratie views to create interactive and complex UIs. The main advantages of
+React is an open-source Javascript library managed by Facebook's React team
+([React](https://react.dev)). It has a component-based architecture and
+declarative views to create interactive and complex UIs. The main advantages of
 using React include its reusable and predictable code, faster development time,
 easier debugging and enhanced developer productivity.
 
 React uses a virtual DOM for fast rendering, employs one-way data binding with
 unidirectional data flow and has a smaller learning curve thus ideal for quick
-developement. It comes with no batteries included and third party libraries are
+development. It comes with no batteries included and third-party libraries are
 needed to accomplish more complex logic but due to its popularity there is a
 huge ecosystem of libraries available
 
@@ -199,24 +199,22 @@ export default TaskCard;
 ```
 
 React is not very opinionated and allows you to develop the application how you
-see fit. This can be somewhat of a drawback of React and there is no solid
+see fit. This can be somewhat of a drawback of React and there are no solid
 conventions and how things should be done. Other drawbacks include that it's not
-a complete framework but simply a library and those third party libraries may be
-needed for large scale applications.
+a complete framework but simply a library and those third-party libraries may be
+needed for large-scale applications.
 
 ---
 
 ### What is Angular?
 
-Angular is a full developement platform and application-design framework built
-on Typescript with a similar component based architecture built and maintained
+Angular is a full development platform and application-design framework built
+on Typescript with a similar component-based architecture built and maintained
 by Google ([Angular](https://angular.dev)). It is very much a batteries included
-framework with integrated libraries, dependency injection and it's own Angular
+framework with integrated libraries, dependency injection and its own Angular
 CLI.
 
-Angular has strong encapsulation and opinionated application structure. It is an
-object orientated framework with an emphasis on classes. It has built in
-features like RxJS, the Angular CLI and testing as well as built in support for
+Angular has a strong emphasis on encapsulation and opinionated application structure. It is an object-orientated framework with an emphasis on classes. It has built-in features like RxJS, the Angular CLI and testing as well as built-in support for
 HTTP, Ajax and Observables. It utilizes two-way data binding, optimizes coding
 practices and is focused on mid-level to enterprise scale.
 
@@ -299,35 +297,32 @@ export class TaskCardComponent {
 #### React
 
 A huge advantage to React in terms of dev experience is its popularity, meaning
-there is lots of resources, guides, tutorials and Stack Overflow articles out
+there are lots of resources, guides, tutorials and Stack Overflow articles out
 there. It is also very easy to get started with, anyone with an understanding of
-HTML and Javascript will feel comfortable using React, although someone
+HTML and Javascript will feel comfortable using React, although somewhat
 unconventional in mixing the two in a JSX or TSX file the writing of Javascript
 and HTML is the same. Another win for React is its flexibility, it isn't
-opinionated on how developer should treat/write the code.
+opinionated on how developers should treat/write the code.
 
 #### Angular
 
-A massive selling point for Angular is that batteries included framework meaning
-less of a need for third party libraries. It is focused on mid-level to
-enterprise scale apps. It promotes a seperation of concerns by isolating the
-view from the business logic in it's `component.ts` and `component.html`
+A massive selling point for Angular is that it is a "batteries included" framework meaning less of a need for third-party libraries. It is focused on mid-level to
+enterprise-scale apps. It promotes separation of concerns by isolating the
+view from the business logic in its `component.ts` and `component.html`
 structure. It is also opinionated on how the code should be structured, this can
-be an advantage for those used to a OOP style programming paradigm but from
+be an advantage for those used to an OOP style of programming paradigm but from
 another perspective can be a steeper learning curve for new developers.
 
 ---
 
 ### Performance Comparison
 
-Both React and Angular projects are deloyed to my VPS and built as a single page
+Both React and Angular projects are deployed to my VPS and built as a single page
 application with the bundle being hosted via a Docker container and Nginx web
 server.
 
-First lets take a look at the bundle size between the two projects, the React
-project `/dist` folder in the project directory that was output using
-`tsc && vite build` command. The Angular project `/dist` folder that was output
-using `ng build`.
+Firstly let's take a look at the bundle size between the two projects, the React
+project `/dist` folder which was output using `tsc && vite build` command. And the Angular project `/dist` folder which was output using `ng build`.
 
 #### Output Comparison
 
@@ -336,25 +331,25 @@ using `ng build`.
 |      Angular      |       381 KB       |
 |       React       |       578 KB       |
 
-We can see that Angular is a smaller output bundle compared to the React
-application.
+We can see that Angular is a smaller output bundle compared to React
+bundle.
 
 #### pingdom.com Comparison
 
-Now lets take a look at some metrics when using a website performance benchmark
-site such as [tools.pingdom.com](https://tools.pingdom.com).
+Now let's take a look at some metrics when using a website performance benchmark
+website such as [tools.pingdom.com](https://tools.pingdom.com).
 
 | Framework/Library | Peformance Grade | Page Size | Load time | No of Requests |
 | :---------------: | :--------------: | :-------: | :-------: | :------------: |
 |      Angular      |      A - 92      | 129.8 KB  |   1.91s   |       10       |
 |       React       |      A - 95      | 136.1 KB  |   1.22s   |       10       |
 
-Here we find that although Angular is delivering a smalller page size it still
+Here we find that although Angular is delivering a smaller page size it still
 loses out to Angular in both performance grade and load time.
 
 #### pagespeed.web.dev Comparison
 
-Next lets use [pagespeed.web.dev](https://pagespeed.web.dev) specifically the
+Next let's use [pagespeed.web.dev](https://pagespeed.web.dev) specifically the
 performance metrics.
 
 | Framework/Library | Peformance Grade | First Contentful Paint | Total Blocking Time | Speed Index | Largest Contentful Paint |
@@ -362,29 +357,29 @@ performance metrics.
 |      Angular      |        85        |          0.6s          |        30ms         |    0.8s     |           0.7s           |
 |       React       |        94        |          0.7s          |         0ms         |    0.7s     |           0.7s           |
 
-Again here we see that despite Angular smaller bundle size it is marginally
+Again here we see that despite Angular's smaller bundle size it is marginally
 slower in key performance metrics such as FCP, LCP and overall speed. This must
 be caveat by the fact that bold are small simple todo list applications and a
-much more complex mid to enterprise scale application may yield much more varied
+much more complex mid to enterprise-scale application may yield much more varied
 results
 
 ---
 
 ### Conclusion
 
-Whilst React is faster in perfomance metrics (i.e. on paper) and I personally
-prefer to develop in Reacts less opiniationated and flexibility way of
-functional programming both are viable options for building simple single page
+Whilst React is faster in performance metrics (i.e. on paper) and I personally
+prefer to develop in Reacts less opinionated and flexible way of
+functional programming both are viable options for building simple single-page
 application in 2024 and it really comes down to personal preference.
 
 If you're a newer developer trying to choose your first library/framework to get
-into web development then I would lean heavily towards React however if your
-goal is to land a job in larger tech company then there's a high likelihood
+into web development then I would lean more toward React however if your
+goal is to land a job in large tech company then there's a high likelihood
 they'll be using Angular and it may be more beneficial to know the key concepts
 and paradigms of Angular (speaking from personal experience).
 
-But these are only the opinions of one developer and in reality there is no
-wrong choice, the important thing is being confident and understand the
+But these are only the opinions of one developer and in actual fact there's no
+wrong choice, the important thing is being confident and understanding the
 fundamentals of HTML, CSS and Javascript, a framework/library will then be much
 easier to learn and play around with, but that's the best thing to do, try both
 options, try to build something interesting and enjoy the process.

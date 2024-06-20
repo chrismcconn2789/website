@@ -29,7 +29,7 @@ export default function Home() {
   });
 
   return (
-    <main className="max-w-5xl m-auto flex min-h-screen flex-col items-center gap-20 p-8">
+    <main className="max-w-5xl m-auto flex min-h-screen flex-col items-center gap-10 md:gap-20 p-4 md:p-8">
       <Header />
       <About />
       <Projects />

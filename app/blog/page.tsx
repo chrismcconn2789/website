@@ -25,10 +25,10 @@ export default function Blog() {
     };
   });
   return (
-    <main className="max-w-5xl m-auto flex min-h-screen flex-col gap-16 p-8">
+    <main className="max-w-5xl m-auto flex min-h-screen flex-col gap-10 md:gap-20 p-4 md:p-8">
       <BlogHeader />
       <div className="flex">
-        <h2 className="flex text-2xl font-bold tracking-tight underline-offset-8 decoration-teal-400 underline justify-self-start">
+        <h2 className="flex text-xl md:text-2xl font-bold tracking-tight underline-offset-8 decoration-teal-400 underline justify-self-start">
           Blog
         </h2>
       </div>
@@ -43,8 +43,10 @@ export default function Blog() {
           <div className="w-full rounded-md bg-slate-100 h-auto shadow-md p-4 flex flex-col gap-2">
             <a key={blog.slug} href={`/blog/${blog.slug}`}>
               <div className="flex flex-col gap-2">
-                <h4 className="text-lg font-semibold">{blog.meta.title}</h4>
-                <p className="text-base text-slate-600">
+                <h4 className="text-base md:text-lg font-semibold">
+                  {blog.meta.title}
+                </h4>
+                <p className="text-sm md:text-base text-slate-600">
                   {blog.meta.description}
                 </p>
                 <div className="flex justify-between mt-2">

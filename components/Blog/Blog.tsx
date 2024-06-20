@@ -4,11 +4,11 @@ import { Button } from "../ui/button";
 
 const Blog = ({ blogs }: { blogs: BlogType[] }) => {
   return (
-    <div id="blog" className="w-full px-8 flex flex-col">
-      <h2 className="text-2xl font-bold tracking-tight underline-offset-8 decoration-teal-400 underline mb-4">
+    <div id="blog" className="w-full flex flex-col px-1 md:px-6">
+      <h2 className="text-xl md:text-2xl font-bold tracking-tight underline-offset-8 decoration-teal-400 underline mb-4">
         Blog
       </h2>
-      <p className="text-base text-slate-600 mb-4">
+      <p className="text-sm md:text-base text-slate-600 mb-4">
         Some of my latest blog articles, click on read more to view more
         articles
       </p>
@@ -25,8 +25,10 @@ const Blog = ({ blogs }: { blogs: BlogType[] }) => {
             <div className="w-full rounded-md bg-slate-100 h-auto shadow-md p-4 flex flex-col gap-2">
               <a key={blog.slug} href={`/blog/${blog.slug}`}>
                 <div className="flex flex-col gap-2">
-                  <h4 className="text-lg font-semibold">{blog.meta.title}</h4>
-                  <p className="text-base text-slate-600">
+                  <h4 className="text-base md:text-lg font-semibold">
+                    {blog.meta.title}
+                  </h4>
+                  <p className="text-sm md:text-base text-slate-600">
                     {blog.meta.description}
                   </p>
                   <div className="flex justify-between mt-2">
