@@ -1,0 +1,491 @@
+---
+title: Getting Started with NgRx
+description: A guide to getting started with NgRx state management library in Angular and breaking down each of the key concepts and what their purpose is
+date: "06/24/2024"
+tags: [angular, ngrx, redux, state-management]
+---
+
+# Getting Started with NgRx
+
+**Table of Contents**
+
+1. [Intro](#intro)
+2. [What is NgRx?](#what-is-ngrx)
+3. [Some Key Concepts and Terms](#some-key-concepts-and-terms)
+4. [State Management Lifecycle Diagram](#state-management-lifecycle-diagram)
+5. [Setting Up Our Application](#setting-up-our-application)
+6. [Actions](#actions)
+7. [Reducers](#reducers)
+8. [Effects](#effects)
+9. [Selectors](#selectors)
+10. [Resources](#resources)
+
+### Intro
+
+State management is a key component when building applications. We will cover getting started with NgRx in Angular. We will use the jsonplaceholder API to fetch some sample data we can use for our state.
+
+---
+
+### What is NgRx?
+
+"_NgRx Store provides reactive state management for Angular apps inspired by Redux. Unify the events in your application and derive state using RxJS._"
+
+[NgRx.io](https://ngrx.io/)
+
+---
+
+### Some Key Concepts and Terms
+
+- **Store** - is where all the state is accessed, an observable of state and an observer of actions.
+- **Actions** - they describe unique events that are dispatched from components and services.
+- **Reducers** - are pure functions that handle state changes, taking the current state and the latest action to compute a new state.
+- **Effects** - use streams to provide new sources of actions to reduce state based on external interactions such as network requests, web socket messages and time-based events.
+- **Selectors** - they are pure functions used to select, derive and compose pieces of state.
+
+---
+
+### State Management Lifecycle Diagram
+
+![State management lifecycle](https://utfs.io/f/d294206c-c7d6-4904-b11e-a10783cf9f19-a33ef9.png)
+
+---
+
+### Setting Up Our Application
+
+Now that we have covered the key concepts of a state management library, specifically NgRx and how the overall lifecycle works, lets begin with scaffolding out an Angular application and adding the NgRx libraries.
+
+```bash
+npx -p @angular/cli ng new angular-ngrx
+```
+
+```bash
+# ngrx main store package
+npm install @ngrx/store --save
+
+# ngrx package for handling effects
+npm install @ngrx/effects --save
+
+# ngrx package to view the store in devtools for development
+npm install @ngrx/store-devtools --save
+```
+
+In order to use NgRx in our application, we need to add the following to the `app.config.ts`
+
+```ts
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    importProvidersFrom(
+      StoreModule.forRoot({}),
+      StoreModule.forFeature("posts", postsReducer),
+      EffectsModule.forRoot(),
+      EffectsModule.forFeature(PostEffects)
+    ),
+    provideStoreDevtools({ maxAge: 25 }),
+    provideHttpClient(withFetch()),
+  ],
+};
+```
+
+We'll also create an API service, `backend-api.service.ts`, to handle the HTTP calls for getting the posts in the `app/services` directory.
+
+```ts
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+
+export type Post = {
+  userId: string;
+  id: string;
+  title: string;
+  body: string;
+};
+
+@Injectable({
+  providedIn: "root",
+})
+export class BackendApiService {
+  private baseUrl: string = "https://jsonplaceholder.typicode.com/posts";
+  constructor(private httpClient: HttpClient) {}
+
+  public getAll(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(this.baseUrl);
+  }
+}
+```
+
+Next, lets look at the actions we'll need.
+
+---
+
+### Actions
+
+First, let's create a new folder inside the `app` directory titled `posts` and in there, create `posts.actions.ts`.
+
+Looking at the API documentation for the jsonplaceholder API we know we'll get a `json` response of an array of posts in the format below:
+
+```json
+{
+  "userId": 1,
+  "id": 1,
+  "title": "Title 1",
+  "body": "Some body text"
+}
+```
+
+Knowing this we can create a type in our application.
+
+```ts
+export type Post = {
+  userId: string;
+  id: string;
+  title: string;
+  body: string;
+};
+```
+
+Below are some imports we'll need to create the actions.
+
+```ts
+import { createAction, props } from "@ngrx/store";
+import type { Post } from "../services/backend-api.service";
+```
+
+Now we can create the following actions:
+
+```ts
+export const getPosts = createAction("[Posts] Get Posts");
+```
+
+The initial action to dispatch, which will call the effect to fetch the posts (we'll look at this when looking at the effects)
+
+```ts
+export const getPostsSuccess = createAction(
+  "[Posts] Get Posts Success",
+  props<{ posts: Post[] }>()
+);
+```
+
+The action that is dispatched when the API returns a successful response, i.e. an array of posts
+
+```ts
+export const getPostsFailure = createAction(
+  "[Posts] Get Posts Failure",
+  props<{ error: string }>()
+);
+```
+
+The action that is dispatched if the API returns an error
+
+These will also trigger their respective reducers to update the state of the store. Let's take a look at those next.
+
+---
+
+### Reducers
+
+Again let's create a new file inside the `posts` directory titled `posts.reducers.ts`.
+
+Bring in the necessary imports, the actions, the Post type, and some NgRx library functions.
+
+```ts
+import { createReducer, on } from "@ngrx/store";
+import type { Post } from "../services/backend-api.service";
+import { getPosts, getPostsFailure, getPostsSuccess } from "./posts.actions";
+```
+
+We need to create the state of our posts. We'll use the following:
+
+```ts
+export type PostState = {
+  posts: Post[];
+  error: string;
+  loading: boolean;
+};
+```
+
+And we'll need some initial store state to pass to the reducers:
+
+```ts
+export const initialState: PostState = {
+  error: "",
+  posts: [],
+  loading: false,
+};
+```
+
+Now we can create the reducers using the `createReducer` function, passing in the `initialState` and use the `on` function to determine how the state is changed based on the action that is called.
+
+Creating the reducer:
+
+```ts
+export const postsReducer = createReducer(
+  initialState,
+  ...
+)
+```
+
+And `on` getPosts we spread the existing state and update the loading boolean to `true`
+
+```ts
+on(
+  getPosts,
+  (state) =>
+    (state = {
+      ...state,
+      loading: true,
+    })
+);
+```
+
+`on` getPostsSuccess we take the state and the action, spread the existing state, set the `posts` state to the posts returned from the API and finally set loading to `false`
+
+```ts
+on(
+  getPostsSuccess,
+  (state, action) =>
+    (state = {
+      ...state,
+      posts: action.posts,
+      loading: false,
+    })
+);
+```
+
+Finally `on` getPostsFailure, we do the same, spreading the existing state, set the error to the `action.error` and set loading to `false`
+
+```ts
+on(
+  getPostsFailure,
+  (state, action) =>
+    (state = {
+      ...state,
+      error: action.error,
+      loading: false,
+    })
+);
+```
+
+---
+
+### Effects
+
+We talked prior about how when the action is dispatched, it calls the relevant reducer but also call an effect that is listening for that events.
+
+So again, let's create a new file inside the `posts` directory titled `posts.effects.ts`.
+
+And then we'll start by bringing in the necessary imports.
+
+```ts
+import { Injectable, inject } from "@angular/core";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { catchError, exhaustMap, map, of } from "rxjs";
+import { BackendApiService } from "../services/backend-api.service";
+import { getPosts, getPostsFailure, getPostsSuccess } from "./posts.actions";
+```
+
+And creating our `PostEffects` class.
+
+```ts
+@Injectable()
+export class PostEffects {
+  private actions$ = inject(Actions);
+  private backendApiService = inject(BackendApiService);
+  ...
+}
+```
+
+Now we create the `getPost$` effect that will be called as it's listening for an `ofType` action of `getPosts`. It'll make the API call using the injected BackendApiService's `getAll()` function.
+
+If it gets a 200 OK response, it'll return the `getPostsSuccess` action with the posts for the reducers to update the store.
+
+Otherwise, if it encounters any errors while fetching it'll call the `getPostsFailure` action with the error and update the store accordingly.
+
+Here is our `getPosts$` effect:
+
+```ts
+public getPosts$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getPosts),
+      exhaustMap(() =>
+        this.backendApiService.getAll().pipe(
+          map((posts) => {
+            return getPostsSuccess({ posts });
+          }),
+          catchError((error) => {
+            return of(getPostsFailure({ error }));
+          })
+        )
+      )
+    )
+  );
+```
+
+Let's take a look at the store state while these actions are called.
+
+In order to call an action, we need to inject the store into our components and dispatch the action. Below we see the `postStore` being injected into the `app.component.ts` and dispatching the `getPosts()` action during `ngOnInit`.
+
+```ts
+export class AppComponent implements OnInit {
+  private readonly postStore = inject(Store<PostState>);
+  ...
+  ngOnInit(): void {
+    this.postStore.dispatch(getPosts());
+  }
+  ...
+}
+```
+
+The initial state in the Redux Chrome Dev Tools (`getPosts`):
+
+```json
+{
+  "posts": {
+    "error": "",
+    "posts": [],
+    "loading": true
+  }
+}
+```
+
+After `getPostsSuccess` returns the posts:
+
+```json
+{
+  "posts": {
+    "error": '',
+    "posts": [
+      {
+        "userId": 1,
+        "id": 1,
+        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae
+        ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+      },
+      {
+        "userId": 1,
+        "id": 2,
+        "title": "qui est esse",
+        "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat
+        blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque
+        nisi nulla"
+      },
+      ...
+    ]
+    "loading": false
+  }
+}
+```
+
+If an error occurred during while fetching posts, the `getPostsFailure` state:
+
+```json
+{
+  "posts": {
+    "error": {
+      "headers": {
+        "normalizedNames": {},
+        "lazyUpdate": null,
+        "headers": {}
+      },
+      "status": 0,
+      "statusText": "Unknown Error",
+      "url": "https://jsonplaceholder.typicode.com/posts",
+      "ok": false,
+      "name": "HttpErrorResponse",
+      "message": "Http failure response for
+      https://jsonplaceholder.typicode.com/posts: 0 undefined",
+      "error": {}
+    },
+    "posts": [],
+    "loading": false
+  }
+}
+```
+
+---
+
+### Selectors
+
+In order to access the state from the store and use it in our components, we need to use selectors
+
+As usual, let's first import our necessary functions.
+
+```ts
+import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { PostState } from "./posts.reducer";
+```
+
+Now we create a feature selector.
+
+```ts
+export const postsSelectors = createFeatureSelector<PostState>("posts");
+```
+
+And then we can create a selector using the `createSelector` function to return us a slice of state from our store. Below, we have one selector for getting the posts, one for setting the loading state, and another for selecting a specific post:
+
+```ts
+export const selectPosts = createSelector(
+  postsSelectors,
+  (state) => state.posts
+);
+
+export const selectPostById = (id: string) =>
+  createSelector(postsSelectors, (state) =>
+    state.posts.find((post) => post.id === id)
+  );
+
+export const loading = createSelector(postsSelectors, (state) => state.loading);
+```
+
+We can now use these selectors in our component to subscribe to the values and assign them to variables in the component.
+
+```ts
+export class AppComponent implements OnInit {
+  ...
+  public posts: Post[];
+  public loading: boolean;
+  ...
+  ngOnInit(): void {
+    ...
+    this.postStore
+      .select(selectPosts)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((posts) => (this.posts = posts));
+
+    this.postStore
+      .select(loading)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((loading) => (this.loading = loading));
+    ...
+    }
+}
+```
+
+And we can use these in the template to show some loading markup while waiting for the API response with the posts, and then use Angular's `@for` operator to show the posts:
+
+```html
+<div>
+  <h1>All Posts</h1>
+
+  @if(loading) {
+  <h2>Loading ...</h2>
+  } @if(!loading) {
+  <div>
+    @for(post of posts; track post.id) {
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.body }}</p>
+    }
+  </div>
+  }
+</div>
+```
+
+This was just a brief look and introduction to using NgRx with Angular. I hope you can take something meaningful away from this article or that it helps you get started with state management in your next Angular project.
+
+---
+
+### Resources
+
+- [angular.dev](https://angular.dev)
+- [ngrx.io](https://ngrx.io)
