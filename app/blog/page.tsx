@@ -25,7 +25,7 @@ export default function Blog() {
     };
   });
   return (
-    <main className="max-w-5xl m-auto flex min-h-screen flex-col gap-10 md:gap-20 p-4 md:p-8">
+    <main className="max-w-5xl m-auto flex min-h-screen flex-col gap-6 md:gap-8 p-4 md:p-8">
       <BlogHeader />
       <div className="flex">
         <h2 className="flex text-xl md:text-2xl font-bold tracking-tight underline-offset-8 decoration-teal-400 underline justify-self-start">
@@ -53,7 +53,7 @@ export default function Blog() {
                   {blog.meta.description}
                 </p>
                 <div className="flex justify-between mt-2">
-                  <div className="flex gap-1">
+                  <div className="flex flex-wrap gap-1">
                     {blog.meta.tags.map((tag, index) => (
                       <Badge className="text-xs font-light" key={tag + index}>
                         {tag}

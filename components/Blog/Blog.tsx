@@ -35,7 +35,7 @@ const Blog = ({ blogs }: { blogs: BlogType[] }) => {
                     {blog.meta.description}
                   </p>
                   <div className="flex justify-between mt-2">
-                    <div className="flex gap-1">
+                    <div className="flex flex-wrap gap-1">
                       {blog.meta.tags.map((tag, index) => (
                         <Badge className="text-xs font-light" key={tag + index}>
                           {tag}
