@@ -6,7 +6,7 @@ type ProjectProps = {
   name: string;
   description: string;
   imgUrl: string;
-  link: LiveDemo;
+  link?: LiveDemo;
   github: GithubCode;
   technologies: Technology[];
 };
@@ -17,8 +17,8 @@ type Technology = {
 };
 
 type LiveDemo = {
-  url: string;
-  icon: React.ReactNode;
+  url?: string;
+  icon?: React.ReactNode;
 };
 
 type GithubCode = {
@@ -39,11 +39,13 @@ const Project = ({
       <div className="flex flex-col md:flex-row gap-2 md:gap-0 justify-between items-center">
         <h4 className="text-lg font-bold">{name}</h4>
         <div className="flex gap-2">
-          <a href={link.url}>
-            <Badge className="flex gap-1 font-light rounded-md">
-              {link.icon} Live Demo
-            </Badge>
-          </a>
+          {link && (
+            <a href={link?.url}>
+              <Badge className="flex gap-1 font-light rounded-md">
+                {link?.icon} Live Demo
+              </Badge>
+            </a>
+          )}
           <a href={github.url}>
             <Badge className="flex gap-1 font-light rounded-md">
               {github.icon} Github
@@ -59,7 +61,7 @@ const Project = ({
           width={350}
           height={0}
           alt={`${name} Screenshot`}
-          className="w-full h-auto"
+          className="w-full h-auto object-cover"
         />
       </div>
       <div className="flex flex-wrap justify-center gap-2 self-center">

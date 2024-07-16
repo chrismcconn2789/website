@@ -2,6 +2,7 @@ import { FaGlobe } from "react-icons/fa";
 import {
   SiAngular,
   SiBun,
+  SiClerk,
   SiGithub,
   SiNextdotjs,
   SiNodedotjs,
@@ -101,11 +102,41 @@ const Projects = () => {
               },
               {
                 name: "Node.js",
-                icon: <SiBun className="size-4 text-[#417E37]" />,
+                icon: <SiNodedotjs className="size-4 text-[#417E37]" />,
               },
               {
                 name: "Tailwind CSS",
                 icon: <SiTailwindcss className="size-4 text-[#38BDF9]" />,
+              },
+            ]}
+            key={uuidv4()}
+          />
+        </div>
+        <div className="flex w-full h-auto bg-slate-100 rounded-lg shadow-md justify-center">
+          <Project
+            name="Expense Tracker App"
+            description="An expense tracker application title 'Financial Analytics' to track expense and income with some visualisations"
+            github={{
+              url: "https://github.com/chrismcconn2789/expense-tracker",
+              icon: <SiGithub />,
+            }}
+            imgUrl="https://utfs.io/f/0c5c7155-24a8-4309-935d-37dd6eab82e3-fmrejc.png"
+            technologies={[
+              {
+                name: "Next.js",
+                icon: <SiNextdotjs className="size-4 text-[#FFFFFF]" />,
+              },
+              {
+                name: "Bun",
+                icon: <SiBun className="size-4 text-[#FBF0DF]" />,
+              },
+              {
+                name: "Tailwind",
+                icon: <SiTailwindcss className="size-4 text-[#38BDF9]" />,
+              },
+              {
+                name: "Clerk",
+                icon: <SiClerk className="size-4 text-[#654BF6]" />,
               },
             ]}
             key={uuidv4()}

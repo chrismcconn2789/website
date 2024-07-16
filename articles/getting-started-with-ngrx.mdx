@@ -22,7 +22,7 @@ tags: [angular, ngrx, redux, state-management]
 
 ### Intro
 
-State management is a key component when building applications. We will cover getting started with NgRx in Angular. We will use the jsonplaceholder API to fetch some sample data we can use for our state.
+State management is a key component when building complex applications. We will cover getting started with NgRx in Angular. We will use the Jsonplaceholder API to fetch some sample data we can use for our state.
 
 ---
 
@@ -123,12 +123,12 @@ Next, lets look at the actions we'll need.
 
 First, let's create a new folder inside the `app` directory titled `posts` and in there, create `posts.actions.ts`.
 
-Looking at the API documentation for the jsonplaceholder API we know we'll get a `json` response of an array of posts in the format below:
+Looking at the API documentation for the Jsonplaceholder API we know we'll get a `json` response of an array of posts in the format below:
 
 ```json
 {
-  "userId": 1,
-  "id": 1,
+  "userId": "1",
+  "id": "1",
   "title": "Title 1",
   "body": "Some body text"
 }
@@ -270,7 +270,7 @@ on(
 
 ### Effects
 
-We talked prior about how when the action is dispatched, it calls the relevant reducer but also call an effect that is listening for that events.
+We talked prior about how when the action is dispatched, it calls the relevant reducer but it also calls an effect that is listening for that event.
 
 So again, let's create a new file inside the `posts` directory titled `posts.effects.ts`.
 
@@ -407,7 +407,7 @@ If an error occurred during while fetching posts, the `getPostsFailure` state:
 
 ### Selectors
 
-In order to access the state from the store and use it in our components, we need to use selectors
+In order to access the state from the store and use it in our components, we need to use selectors.
 
 As usual, let's first import our necessary functions.
 
@@ -489,3 +489,4 @@ This was just a brief look and introduction to using NgRx with Angular. I hope y
 
 - [angular.dev](https://angular.dev)
 - [ngrx.io](https://ngrx.io)
+- [Repository for this article](https://github.com/chrismcconn2789/angular-ngrx-demo)

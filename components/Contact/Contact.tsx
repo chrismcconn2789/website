@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FiDownload, FiMail } from "react-icons/fi";
-import { SiGithub, SiInstagram, SiLinkedin, SiTwitter } from "react-icons/si";
+import { SiGithub, SiLinkedin } from "react-icons/si";
 
 const Contact = () => {
   return (
@@ -12,57 +12,42 @@ const Contact = () => {
       <div className="flex flex-col md:flex-row gap-4">
         <div className="w-full md:w-1/2 flex flex-col gap-2">
           <span className="text-base font-semibold">Email & CV</span>{" "}
-          <div className="flex gap-2 p-4 bg-slate-100 rounded-md items-center">
-            <FiMail className="size-6" />
-            <a className="font-medium" href="mailto:hello@chrismcconnell.dev">
+          <a className="font-medium" href="mailto:hello@chrismcconnell.dev">
+            <div className="flex gap-2 p-4 bg-slate-100 rounded-md items-center">
+              <FiMail className="size-6" />
               hello@chrismcconnell.dev
-            </a>
-          </div>
-          {/* TODO: fix up CV and add download back in */}
-          <div className="hidden gap-2 p-4 bg-slate-100 rounded-md items-center">
-            <FiDownload className="size-6" />
-            <a className="font-medium">Curriculum Vitae (CV)</a>
-          </div>
+            </div>
+          </a>
+          <a
+            className="font-medium"
+            href="https://utfs.io/f/89815ec0-f410-433e-81bf-7ff2e1982734-vdqc2j.pdf"
+            download
+          >
+            <div className="flex gap-2 p-4 bg-slate-100 rounded-md items-center">
+              <FiDownload className="size-6" />
+              Curriculum Vitae (CV)
+            </div>
+          </a>
         </div>
         <div className="w-full md:w-1/2 flex flex-col gap-2">
           <div className="text-base font-semibold">Socials</div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div className="flex gap-2 p-4 bg-slate-100 rounded-md items-center">
-              <SiGithub className="size-6" />
-              <Link
-                className="font-medium"
-                href="https://github.com/chrismcconn2789"
-              >
-                Github
-              </Link>
-            </div>
-            <div className="flex gap-2 p-4 bg-slate-100 rounded-md items-center">
-              <SiLinkedin className="text-[#0B66C2] size-6" />
-              <Link
-                className="font-medium"
-                href="https://linkedin.com/in/cmcconnell89"
-              >
-                LinkedIn
-              </Link>
-            </div>
-            <div className="flex gap-2 p-4 bg-slate-100 rounded-md items-center">
-              <SiTwitter className="size-6 text-[#1E96E8]" />
-              <Link
-                className="font-medium"
-                href="https://twitter.com/chrismcconnell2"
-              >
-                Twitter
-              </Link>
-            </div>
-            <div className="flex gap-2 p-4 bg-slate-100 rounded-md items-center">
-              <SiInstagram className="size-6 text-[#ED018F]" />
-              <Link
-                className="font-medium"
-                href="https://instagram.com/chrismcconnell904"
-              >
-                Instagram
-              </Link>
-            </div>
+          <div className="flex gap-2 p-4 bg-slate-100 rounded-md items-center">
+            <SiGithub className="size-6" />
+            <Link
+              className="font-medium"
+              href="https://github.com/chrismcconn2789"
+            >
+              Github
+            </Link>
+          </div>
+          <div className="flex gap-2 p-4 bg-slate-100 rounded-md items-center">
+            <SiLinkedin className="text-[#0B66C2] size-6" />
+            <Link
+              className="font-medium"
+              href="https://linkedin.com/in/cmcconnell89"
+            >
+              LinkedIn
+            </Link>
           </div>
         </div>
       </div>
