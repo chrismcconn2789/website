@@ -24,9 +24,9 @@ const About = () => {
               <span>
                 <RxChevronRight className="size-3 md:size-4 text-teal-400 stroke-teal-400 stroke-1 justify-self-start mt-1" />
               </span>
-              I am a front-end developer at OpenText, specializing in creating
-              engaging, interactive, and accessible user interfaces primarily
-              using Angular.
+              I am a front-end developer, specializing in creating engaging,
+              interactive, and accessible user interfaces primarily using
+              Angular & React.
             </p>
             <p className="font-regular text-slate-600 flex gap-1 text-sm md:text-base">
               <span>
