@@ -1,12 +1,13 @@
-import BlogHeader from "@/components/BlogHeader/BlogHeader";
-import Footer from "@/components/Footer/Footer";
+import PageHeader from "@/components/page-header";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { BlogType } from "@/lib/types";
 import fs from "fs";
 import matter from "gray-matter";
+import Link from "next/link";
 import path from "path";
 
-export default function Blog() {
+export default function BlogPage() {
   const files = fs.readdirSync(path.join("articles"));
   const articles: BlogType[] = files.map((filename) => {
     const fileContent = fs.readFileSync(
@@ -24,51 +25,45 @@ export default function Blog() {
       slug: filename.replace(".mdx", ""),
     };
   });
+
   return (
-    <main className="max-w-5xl m-auto flex min-h-screen flex-col gap-6 md:gap-8 p-4 md:p-8">
-      <BlogHeader />
-      <div className="flex">
-        <h2 className="flex text-xl md:text-2xl font-bold tracking-tight underline-offset-8 decoration-teal-400 underline justify-self-start">
-          Blog
-        </h2>
-      </div>
-      {articles
-        .slice(0, 3)
-        .sort((a, b) => {
-          const dateA = Date.parse(a.meta.date.toString());
-          const dateB = Date.parse(b.meta.date.toString());
-          return dateA - dateB;
-        })
-        .map((blog) => (
-          <div
-            key={blog.slug}
-            className="w-full rounded-md bg-slate-100 h-auto shadow-md p-4 flex flex-col gap-2"
-          >
-            <a href={`/blog/${blog.slug}`}>
-              <div className="flex flex-col gap-2">
-                <h4 className="text-base md:text-lg font-semibold">
-                  {blog.meta.title}
-                </h4>
-                <p className="text-sm md:text-base text-slate-600">
-                  {blog.meta.description}
-                </p>
-                <div className="flex justify-between mt-2">
-                  <div className="flex flex-wrap gap-1">
-                    {blog.meta.tags.map((tag, index) => (
-                      <Badge className="text-xs font-light" key={tag + index}>
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                  <span className="self-end text-sm font-light">
-                    {blog.meta.date.toLocaleDateString()}
-                  </span>
-                </div>
-              </div>
-            </a>
-          </div>
+    <PageHeader title="Blog">
+      <div className="flex flex-col gap-4 w-full mt-4 px-1 sm:px-4 mb-8">
+        {articles.map((article) => (
+          <ArticleItem key={article.slug} article={article} />
         ))}
-      <Footer />
-    </main>
+      </div>
+    </PageHeader>
+  );
+}
+
+function ArticleItem({ article }: { article: BlogType }) {
+  return (
+    <div className="flex flex-col gap-4 px-4 pt-4 pb-2 border-zinc-900 border">
+      <h2 className="text-base text-zinc-200 font-semibold">
+        {article.meta.title}
+      </h2>
+      <p className="text-zinc-400 text-sm">{article.meta.description}.</p>
+      <div className="flex flex-col sm:flex-row gap-2 items-start justify-between">
+        <div className="flex flex-wrap gap-2">
+          {article.meta.tags.map((tag) => (
+            <Badge
+              key={tag}
+              className="text-xs self-center h-fit font-normal bg-transparent border-zinc-900 border rounded-full text-zinc-300 hover:bg-zinc-900"
+            >{`#${tag}`}</Badge>
+          ))}
+        </div>
+        <Button
+          asChild
+          variant="link"
+          className="text-zinc-200 self-end"
+          size="sm"
+        >
+          <Link className="text-xs" href={`/blog/${article.slug}`}>
+            Read more...
+          </Link>
+        </Button>
+      </div>
+    </div>
   );
 }

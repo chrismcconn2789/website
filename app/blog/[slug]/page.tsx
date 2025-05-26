@@ -1,10 +1,9 @@
-import BlogHeader from "@/components/BlogHeader/BlogHeader";
-import Footer from "@/components/Footer/Footer";
 import fs from "fs";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import path from "path";
 
+import PageHeader from "@/components/page-header";
 import "@/styles/tokyo-night.css";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
@@ -65,13 +64,11 @@ export async function generateMetadata({
 const ArticlePage = ({ params: { slug } }: routeParams) => {
   const post = getPost(slug);
   return (
-    <main className="max-w-5xl m-auto flex min-h-screen flex-col items-center gap-10 md:gap-20 p-4 md:p-8">
-      <BlogHeader />
-      <article className="max-w-xs md:max-w-5xl prose prose-sm md:prose-base lg:prose-lg prose-slate mx-auto">
+    <PageHeader>
+      <article className="max-w-xs md:max-w-5xl prose prose-base prose-zinc text-zinc-200 mx-auto p-1 sm:p-4">
         <MDXRemote source={post.content} options={options} />
       </article>
-      <Footer />
-    </main>
+    </PageHeader>
   );
 };
 
