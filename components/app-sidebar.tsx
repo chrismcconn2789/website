@@ -38,11 +38,11 @@ function NavLink({
 
 const socialLinkItems = [
   {
-    href: "https://github.com/chrismcconnell",
+    href: "https://github.com/chrismcconn2789",
     icon: <SiGithub className="text-zinc-500 group-hover/git:text-zinc-200" />,
   },
   {
-    href: "https://www.linkedin.com/in/chrismcconnell/",
+    href: "https://www.linkedin.com/in/cmcconnell89/",
     icon: (
       <SiLinkedin className="text-zinc-500 group-hover/git:text-zinc-200" />
     ),
